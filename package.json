@@ -1,0 +1,26 @@
+{
+  "name": "passport-litauth",
+  "version": "1.0.0",
+  "description": "OAuth 2.0 authentication strategy with LITauth for passport",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LITDevs/pasport-litauth.git"
+  },
+  "keywords": [
+    "passport",
+    "litauth",
+    "auth",
+    "authentication",
+    "identity"
+  ],
+  "author": "LIT Devs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LITDevs/pasport-litauth/issues"
+  },
+  "homepage": "https://github.com/LITDevs/pasport-litauth#readme",
+  "dependencies": {
+    "passport-oauth2": "^1.6.1"
+  }
+}
