@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LITDevs/pasport-litauth.git"
+    "url": "git+https://github.com/LITDevs/passport-litauth.git"
   },
   "keywords": [
     "passport",
@@ -17,9 +17,9 @@
   "author": "LIT Devs",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/LITDevs/pasport-litauth/issues"
+    "url": "https://github.com/LITDevs/passport-litauth/issues"
   },
-  "homepage": "https://github.com/LITDevs/pasport-litauth#readme",
+  "homepage": "https://github.com/LITDevs/passport-litauth#readme",
   "dependencies": {
     "passport-oauth2": "^1.6.1"
   }

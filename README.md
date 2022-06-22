@@ -45,7 +45,8 @@ app.get('/auth/litauth/callback', passport.authenticate('litauth', {
 I lied, LITauth doesn't provide a refresh token at the time of writing.
 
 ## Examples
-Go look at [vukkybox](https://github.com/LITDevs/vukkybox)
+
+There is a example server in the `example` directory.
 
 ## Credits
 * Nicholas Tay - basically copied passport-discord but modified it slightly to work for my use
