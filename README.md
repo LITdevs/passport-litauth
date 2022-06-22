@@ -19,7 +19,7 @@ passport.use(new LITauthStrategy({
     callbackURL: 'callbackURL',
     scope: scopes
 },
-function(accessToken, refreshToken, profile, cb) { //Although refreshToken is here it will always be undefined, LITauth doesn't supply one.
+function(accessToken, refreshToken, profile, cb) { //Although refreshToken is here it will always be set to "none", LITauth doesn't supply one.
     User.findOrCreate({ LITauthId: profile.id }, function(err, user) {
         return cb(err, user);
     });
