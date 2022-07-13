@@ -19,7 +19,7 @@ passport.use(new LITauthStrategy({
     callbackURL: 'callbackURL',
     scope: scopes
 },
-function(accessToken, refreshToken, profile, cb) { //Although refreshToken is here it will always be set to "none", LITauth doesn't supply one.
+function(accessToken, refreshToken, profile, cb) {
     User.findOrCreate({ LITauthId: profile.id }, function(err, user) {
         return cb(err, user);
     });
@@ -42,7 +42,45 @@ app.get('/auth/litauth/callback', passport.authenticate('litauth', {
 
 #### Refresh Token Usage
 
-I lied, LITauth doesn't provide a refresh token at the time of writing.
+In some use cases where the profile may be fetched more than once or you want to keep the user authenticated, refresh tokens may wish to be used. A package such as passport-oauth2-refresh can assist in doing this.
+
+Example:
+
+`npm install passport-oauth2-refresh --save`
+
+```js
+var LITauthStrategy = require('passport-discord').Strategy
+  , refresh = require('passport-oauth2-refresh');
+
+var litauthStrat = new LITauthStrategy({
+    clientID: 'id',
+    clientSecret: 'secret',
+    callbackURL: 'callbackURL'
+},
+function(accessToken, refreshToken, profile, cb) {
+    profile.refreshToken = refreshToken; // store this for later refreshes
+    User.findOrCreate({ LITauthId: profile.id }, function(err, user) {
+        if (err)
+            return done(err);
+
+        return cb(err, user);
+    });
+});
+
+passport.use(litauthStrat);
+refresh.use(litauthStrat);
+```
+
+... then if we require refreshing when fetching an update or something ...
+
+```js
+refresh.requestNewAccessToken('litauth', profile.refreshToken, function(err, accessToken, refreshToken) {
+    if (err)
+        throw; // boys, we have an error here.
+    
+    profile.accessToken = accessToken; // store this new one for our new requests!
+});
+```
 
 ## Examples
 
