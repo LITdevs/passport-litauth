@@ -49,7 +49,7 @@ Example:
 `npm install passport-oauth2-refresh --save`
 
 ```js
-var LITauthStrategy = require('passport-discord').Strategy
+var LITauthStrategy = require('passport-litauth').Strategy
   , refresh = require('passport-oauth2-refresh');
 
 var litauthStrat = new LITauthStrategy({
